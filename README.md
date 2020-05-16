@@ -12,7 +12,7 @@ Run the docker image as:
 
 ## Sample Curls
 
-###State metrics
+### State metrics
 
     curl -X GET \
       'http://localhost:8080/playground/impact-metrics/state?state=AK
@@ -30,7 +30,7 @@ Run the docker image as:
         }
     }
     
- -
+ ----
   
     curl -X GET \
               'http://localhost:8080/playground/impact-metrics/state?state=IL'   
@@ -48,7 +48,7 @@ Run the docker image as:
         }
     }
     
-  -
+  -----
   
     curl -X GET \
                 'http://localhost:8080/playground/impact-metrics/state?state=ILCS'   
