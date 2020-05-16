@@ -36,7 +36,7 @@ public class ImpactMetricsController {
         logger.info("Recieved request to get US metrics");
         ImpactResponse response;
         try {
-            response = impactService.getImpactedMetrics("US");
+            response = impactService.getImpactedMetricsForCountry("US");
             if (response.isSuccess()) {
                 logger.info("Returning successful response");
                 return new ResponseEntity<>(response, HttpStatus.ACCEPTED);

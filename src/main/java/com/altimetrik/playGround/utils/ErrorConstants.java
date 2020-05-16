@@ -1,7 +1,7 @@
 package com.altimetrik.playGround.utils;
 
 /**
- * Container for all the constants
+ * Container for all the constants in the service
  */
 public class ErrorConstants {
 

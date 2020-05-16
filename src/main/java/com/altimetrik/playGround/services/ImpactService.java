@@ -39,8 +39,14 @@ public class ImpactService implements IService {
 
     }
 
+    /**
+     * Returns the metrics for the given country
+     *
+     * @param country the country whose covid metrics are required //For now supporting only US
+     * @return {@link ImpactResponse}
+     */
     @Override
-    public ImpactResponse getImpactedMetrics(String country) {
+    public ImpactResponse getImpactedMetricsForCountry(String country) {
 
 
         logger.info("getting metrics for country: {} ", country);
@@ -52,24 +58,22 @@ public class ImpactService implements IService {
             return impactResponse;
         }
 
-        if (serviceUtil.validateCountry(country)) {
-            try {
-                Call<List<CountryResponse>> usMetricRequest = cdcClient.getUSMetrics(Configs.CDC_US_ENDPOINT);
-                logger.debug("Making request for us");
-                Response<List<CountryResponse>> response = usMetricRequest.execute();
-                logger.info("response recieved {} ", response.body());
-                impactResponse = serviceUtil.constructImpactResponse(response);
-                impactResponse.setCountry(country);
 
-                logger.info("Returning respose {}", impactResponse);
+        try {
+            Call<List<CountryResponse>> usMetricRequest = cdcClient.getUSMetrics(Configs.CDC_US_ENDPOINT);
+            logger.debug("Making request for us");
+            Response<List<CountryResponse>> response = usMetricRequest.execute();
+            logger.info("response recieved {} ", response.body());
+            impactResponse = serviceUtil.constructImpactResponse(response);
+            impactResponse.setCountry(country);
 
-                return impactResponse;
+            logger.info("Returning respose {}", impactResponse);
 
-            } catch (IOException e) {
-                e.printStackTrace();
-                logger.error("Error {}", e.getCause());
+            return impactResponse;
 
-            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            logger.error("Error {}", e.getCause());
 
         }
 
@@ -77,6 +81,13 @@ public class ImpactService implements IService {
         return impactResponse;
     }
 
+    /**
+     * Returns the metrics for the given country and state
+     *
+     * @param country the country whose covid metrics are required
+     * @param state   the state code
+     * @return {@link ImpactResponse}
+     */
     @Override
     public ImpactResponse getImpactedMetricsForState(String country, String state) {
         logger.info("getting metrics for country: {} and state{} ", country, state);
@@ -90,7 +101,7 @@ public class ImpactService implements IService {
         }
 
         try {
-            Call<StateResponse> usMetricRequest = cdcClient.getStateMetrics(Configs.CDC_STATE_ENDPOINT.replace("{STATE}", state));
+            Call<StateResponse> usMetricRequest = cdcClient.getStateMetrics(Configs.CDC_STATE_ENDPOINT.replace("{STATE}", state)); // Changing the URL based on the State
             logger.info("Making request for us");
             Response<StateResponse> response = usMetricRequest.execute();
             logger.info("response recieved {} ", response.body());

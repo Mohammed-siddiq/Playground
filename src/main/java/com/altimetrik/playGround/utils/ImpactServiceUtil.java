@@ -91,10 +91,10 @@ public class ImpactServiceUtil {
     }
 
     /**
-     * Extracts metrics that are of concern from the response object
+     * Extracts metrics that are of concern from the State's response object
      *
      * @param response the response returned from the CDC
-     * @return
+     * @return {@link ImpactMetrics}
      */
     private ImpactMetrics extractStateSupportedMetrics(StateResponse response) {
         ImpactMetrics impactMetrics = new ImpactMetrics();
@@ -108,6 +108,12 @@ public class ImpactServiceUtil {
     }
 
 
+    /**
+     * Extracts metrics that are of concern from the country's response object
+     *
+     * @param usResponse the response returned from the CDC
+     * @return {@link ImpactMetrics}
+     */
     private ImpactMetrics extractSupportedMetrics(CountryResponse usResponse) {
         ImpactMetrics impactMetrics = new ImpactMetrics();
         impactMetrics.setNegativeCases(usResponse.getNegative());

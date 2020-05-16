@@ -22,7 +22,7 @@ class PlaygroundApplicationTests {
     @Test
     public void verifyValidUSResults() {
 
-        ImpactResponse response = impactService.getImpactedMetrics("US");
+        ImpactResponse response = impactService.getImpactedMetricsForCountry("US");
         Assertions.assertNotNull(response);
         Assertions.assertTrue(response.isSuccess());
         Assertions.assertTrue(response.getImpactedMetrics().getNegativeCases() > 0);
@@ -32,7 +32,7 @@ class PlaygroundApplicationTests {
     @Test
     public void verifyInValidUSResults() {
 
-        ImpactResponse response = impactService.getImpactedMetrics("invlaidCountry");
+        ImpactResponse response = impactService.getImpactedMetricsForCountry("invlaidCountry");
         Assertions.assertNotNull(response);
         Assertions.assertTrue(!response.isSuccess());
         Assertions.assertEquals(response.getMessage(), ErrorConstants.INVALID_COUNTRY);
@@ -41,6 +41,17 @@ class PlaygroundApplicationTests {
     @Test
     void verifyValidStateResult() {
         ImpactResponse response = impactService.getImpactedMetricsForState("US", "AZ");
+        Assertions.assertNotNull(response);
+        Assertions.assertTrue(response.isSuccess());
+        Assertions.assertTrue(response.getImpactedMetrics().getNegativeCases() > 0);
+        Assertions.assertTrue(response.getImpactedMetrics().getTotalTestResults() > 0);
+        Assertions.assertTrue(response.getImpactedMetrics().getPositiveCases() > 0);
+
+    }
+
+    @Test
+    void verifyAnotherValidStateResult() {
+        ImpactResponse response = impactService.getImpactedMetricsForState("US", "IL");
         Assertions.assertNotNull(response);
         Assertions.assertTrue(response.isSuccess());
         Assertions.assertTrue(response.getImpactedMetrics().getNegativeCases() > 0);
