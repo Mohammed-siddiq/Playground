@@ -1,13 +1,15 @@
-package com.altimetrik.plaground;
+package com.altimetrik.playGround;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class PlagroundApplicationTests {
+class PlaygroundApplicationTests {
 
 	@Test
 	void contextLoads() {
 	}
+
+
 
 }

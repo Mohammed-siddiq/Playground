@@ -1,13 +1,13 @@
-package com.altimetrik.plaground;
+package com.altimetrik.playGround;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PlagroundApplication {
+public class PlaygroundApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PlagroundApplication.class, args);
+		SpringApplication.run(PlaygroundApplication.class, args);
 	}
 
 }
