@@ -11,8 +11,8 @@
     <groupId>com.altimetrik</groupId>
     <artifactId>playground</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>plaground</name>
-    <description>Playgorund Test</description>
+    <name>playground</name>
+    <description>Playground Test</description>
 
     <properties>
         <java.version>1.8</java.version>
@@ -25,12 +25,9 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <!--<dependency>-->
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-starter-security</artifactId>-->
+        <!--<groupId>org.springframework.boot</groupId>-->
+        <!--<artifactId>spring-boot-starter-security</artifactId>-->
         <!--</dependency>-->
-
-
-
 
 
         <dependency>
@@ -72,6 +69,7 @@
     </dependencies>
 
     <build>
+        <finalName>play-ground-dev-build</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
