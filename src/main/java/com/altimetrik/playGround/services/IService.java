@@ -8,7 +8,9 @@ import com.altimetrik.playGround.dtos.ImpactResponse;
  */
 public interface IService {
 
-    ImpactResponse getImpactedMetrics(String country, String state);
+    ImpactResponse getImpactedMetricsForState(String country, String state);
+    ImpactResponse getImpactedMetrics(String country);
+
 
 
 }

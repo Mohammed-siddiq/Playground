@@ -15,4 +15,5 @@ public class ImpactMetrics {
     private long totalTestResults;
     private long positiveCases;
     private long negativeCases;
+    private long death;
 }
